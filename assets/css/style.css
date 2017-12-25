@@ -1,3 +1,9 @@
 #cat {
+cursor:pointer;
 width:100%;
+}
+
+nav {
+background-color:#563d7c;
+color:#fff;
 }
