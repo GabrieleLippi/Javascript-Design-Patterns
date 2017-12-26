@@ -1,7 +1,13 @@
-#cat {
+#cat-1 {
 cursor:pointer;
 width:100%;
 }
+
+#cat-2 {
+cursor:pointer;
+width:100%;
+}
+
 
 nav {
 background-color:#563d7c;
