@@ -1,14 +1,12 @@
-#cat-1 {
-cursor:pointer;
-width:100%;
-}
-
-#cat-2 {
+#cat1,#cat2,#cat3,#cat4,#cat5 {
 cursor:pointer;
 width:100%;
 }
 
 
+.cat{
+display:none;
+}
 nav {
 background-color:#563d7c;
 color:#fff;
