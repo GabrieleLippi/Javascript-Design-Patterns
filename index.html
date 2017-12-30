@@ -1,80 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Javascript Design Patterns</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <title>Udacity Retain</title>
+    <link rel="stylesheet" href="css/retain.css">
 </head>
-
 <body>
-<nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1">Javascript Design Patterns</span>
-</nav>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <ul class="list-group">
-        <li class="list-group-item">Grumpy Cat</li>
-        <li class="list-group-item">Keyboard Cat</li>
-        <li class="list-group-item">Sofa Cat</li>
-        <li class="list-group-item">Brain Cat</li>
-        <li class="list-group-item">Fat Cat</li>
-      </ul>
-    </div>
+    <form id="new-note-form" class="new-note-form">
+        <input id="new-note-content" class="new-note-content">
+    </form>
+    <ul id="notes" class="notes"></ul>
 
-
-    <div class="col-md-6">
-     <div id="catWrapper1" class="card cat" style="width: 20rem;">
-       <img id="cat1" class="card-img-top" src="img/grumpy-cat.jpg" alt="Grumpy Cat">
-        <div class="card-body">
-          <h4 class="card-title">Grumpy Cat</h4>
-          <p class="card-text">Click on the image of the cat and see grow the counter counter below!</p>
-          <button class="alert alert-info">Clicked <span id="counter1"></span> times</button>
-        </div>
-      </div>
-     <div id="catWrapper2" class="card cat" style="width: 20rem;">
-       <img id="cat2" class="card-img-top" src="img/cat-keyboard.jpg" alt="Grumpy Cat">
-        <div class="card-body">
-          <h4 class="card-title">Keyboard Cat</h4>
-          <p class="card-text">Click on the image of the cat and see grow the counter counter below!</p>
-          <button class="alert alert-info">Clicked <span id="counter2"></span> times</button>
-        </div>
-      </div>
-     <div id="catWrapper3" class="card cat" style="width: 20rem;">
-       <img id="cat3" class="card-img-top" src="img/sofa-cat.jpg" alt="Grumpy Cat">
-        <div class="card-body">
-          <h4 class="card-title">Sofa Cat</h4>
-          <p class="card-text">Click on the image of the cat and see grow the counter counter below!</p>
-          <button class="alert alert-info">Clicked <span id="counter3"></span> times</button>
-        </div>
-      </div>
-     <div id="catWrapper4" class="card cat" style="width: 20rem;">
-       <img id="cat4" class="card-img-top" src="img/brain-cat.jpg" alt="Grumpy Cat">
-        <div class="card-body">
-          <h4 class="card-title">Brain Cat</h4>
-          <p class="card-text">Click on the image of the cat and see grow the counter counter below!</p>
-          <button class="alert alert-info">Clicked <span id="counter4"></span> times</button>
-        </div>
-      </div>
-     <div id="catWrapper5" class="card cat" style="width: 20rem;">
-       <img id="cat5" class="card-img-top" src="img/fat-cat.jpg" alt="Grumpy Cat">
-        <div class="card-body">
-          <h4 class="card-title">Fat Cat</h4>
-          <p class="card-text">Click on the image of the cat and see grow the counter counter below!</p>
-          <button class="alert alert-info">Clicked <span id="counter5"></span> times</button>
-        </div>
-      </div>
-
-      </div>
-
-    </div>
-
-
-    </div>
-  </div>
-  <script src="assets/js/script.js"></script>
-  <script src="assets/js/displayCat.js"></script>
-  </body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/retain.js"></script>
+</body>
 </html>

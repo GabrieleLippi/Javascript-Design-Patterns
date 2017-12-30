@@ -1,5 +1,5 @@
-# Javascript-Design-Patterns
-I made this repo to store the exercises completed through Udacity's course "Javascript Design Patterns".
+# Udacity Retain
 
-## For more info
-Check this out: https://eu.udacity.com/course/javascript-design-patterns--ud989
+This is an example from Udacity's [Javascript Design Patterns course](https://www.udacity.com/course/javascript-design-patterns--ud989) for how to use MV* frameworks.
+
+Clone the repo and open up `index.html` in your browser of choice.
