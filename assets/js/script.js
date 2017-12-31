@@ -1,81 +1,60 @@
-var listElement = document.getElementsByClassName("list-group-item");
-
-var number1=0,number2=0,number3=0,number4=0,number5 = 0;
-
-for ( var i = 0; i < listElement.length; i ++ ) {
-    var iterator = i+1;
-    list = listElement[i];
-    list.addEventListener("click",(function(list,iterator){
-        return function() {
-            console.log('listElement:',list);
-            switch (list.textContent) {
-                case 'Grumpy Cat':
-                    var cards = document.getElementsByClassName("card");
-                    for (var i = 0; i < cards.length; i ++) {
-                        cards[i].style.display= "none";
-                    }
-                    document.getElementById("catWrapper1").style.display = "block";
-                    var imgCat = document.getElementById("cat"+iterator);
-                    var counterDiv = document.getElementById("counter"+iterator);
-                    imgCat.addEventListener("click", function(){
-                        number1 ++;
-                        counterDiv.innerHTML = number1;
-                    }, false)
-                    break;
-                case 'Keyboard Cat':
-                    var cards = document.getElementsByClassName("card");
-                    for (var i = 0; i < cards.length; i ++) {
-                        cards[i].style.display= "none";
-                    }
-                    document.getElementById("catWrapper2").style.display = "block";
-                    var imgCat = document.getElementById("cat"+iterator);
-                    var counterDiv = document.getElementById("counter"+iterator);
-                    imgCat.addEventListener("click", function(){
-                        number2 ++;
-                        counterDiv.innerHTML = number2;
-                    }, false)
-                    break;
-                case 'Sofa Cat':
-                    var cards = document.getElementsByClassName("card");
-                    for (var i = 0; i < cards.length; i ++) {
-                        cards[i].style.display= "none";
-                    }
-                    document.getElementById("catWrapper3").style.display = "block";
-                    var imgCat = document.getElementById("cat"+iterator);
-                    var counterDiv = document.getElementById("counter"+iterator);
-                    imgCat.addEventListener("click", function(){
-                        number3 ++;
-                        counterDiv.innerHTML = number3;
-                    }, false)
-                    break;
-                case 'Brain Cat':
-                    var cards = document.getElementsByClassName("card");
-                    for (var i = 0; i < cards.length; i ++) {
-                        cards[i].style.display= "none";
-                    }
-                    document.getElementById("catWrapper4").style.display = "block";
-                    var imgCat = document.getElementById("cat"+iterator);
-                    var counterDiv = document.getElementById("counter"+iterator);
-                    imgCat.addEventListener("click", function(){
-                        number4 ++;
-                        counterDiv.innerHTML = number4;
-                    }, false)
-                    break;
-                case 'Fat Cat':
-                    var cards = document.getElementsByClassName("card");
-                    for (var i = 0; i < cards.length; i ++) {
-                        cards[i].style.display= "none";
-                    }
-                    document.getElementById("catWrapper5").style.display = "block";
-                    var imgCat = document.getElementById("cat"+iterator);
-                    var counterDiv = document.getElementById("counter"+iterator);
-                    imgCat.addEventListener("click", function(){
-                        number5 ++;
-                        counterDiv.innerHTML = number5;
-                    }, false)
-                    break;
-            }
+(function(){
+    var model = {
+        // init: function() {
+        //     if (!localStorage.notes) {
+        //         localStorage.notes = JSON.stringify([]);
+        //     }
+        // },
+        // add: function(obj) {
+        //     var data = JSON.parse(localStorage.notes);
+        //     data.push(obj);
+        //     localStorage.notes = JSON.stringify(data);
+        // },
+        getAllCats: function() {
+             return ['Grumpy Cat', 'Keyboard Cat', 'Sofa Cat', 'Brain Cat', 'Fat Cat'];
         }
-    })(list,iterator))
+    };
 
-}
+
+    var octopus = {
+        // addNewNote: function(noteStr) {
+        //     model.add({
+        //         content: noteStr,
+        //         date: Date.now(),
+        //     });
+        //     view.render();
+        // },
+
+        getCats: function() {
+            return model.getAllCats();
+        },
+
+        init: function() {
+            // model.init();
+            listView.init();
+        }
+    };
+
+
+    var listView = {
+        init: function() {
+            this.catsList = document.getElementById("cats-list");
+            listView.render();
+        },
+        render: function(){
+            var self = this;
+            octopus.getCats().map(function(cat){
+                var listElement = document.createElement('li')
+                listElement.className = 'list-group-item'
+                var listElementText = document.createTextNode(cat)
+                listElement.appendChild(listElementText)
+                self.catsList.appendChild( listElement );
+            });
+        }
+    };
+
+    var catDetails = {
+    };
+
+    octopus.init();
+})();
