@@ -49,6 +49,7 @@ var octopus = {
         // tell our views to initialize
         catListView.init();
         catView.init();
+        adminView.init();
     },
 
     getCurrentCat: function() {
@@ -69,6 +70,8 @@ var octopus = {
         model.currentCat.clickCount++;
         catView.render();
     }
+
+
 };
 
 
@@ -143,6 +146,16 @@ var catListView = {
         }
     }
 };
+
+const adminView = {
+    init: function() {
+        this.catAdminButton = document.getElementById("admin")
+        this.catAdminPanel = document.getElementById("admin-panel")
+        this.catAdminButton.addEventListener("click", ()=>{
+            this.catAdminPanel.style.display = "block"; 
+        })
+    }
+}
 
 // make it go!
 octopus.init();
