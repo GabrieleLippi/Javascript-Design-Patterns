@@ -49,7 +49,8 @@ var octopus = {
         // tell our views to initialize
         catListView.init();
         catView.init();
-        adminView.init();
+        // admin panel controls
+        adminPanelControl.init()
     },
 
     getCurrentCat: function() {
@@ -65,14 +66,18 @@ var octopus = {
         model.currentCat = cat;
     },
 
+    updateCatModel: function(name,url,clicks){
+        model.currentCat.name = name
+        model.currentCat.url = url
+        model.currentCat.clicks = clicks
+    },
+
     // increments the counter for the currently-selected cat
     incrementCounter: function() {
         model.currentCat.clickCount++;
         catView.render();
-        adminView.render();
-    }
-
-
+        adminView.init();
+    },
 };
 
 
@@ -149,26 +154,60 @@ var catListView = {
     }
 };
 
-const adminView = {
+const adminPanelControl = {
+    catAdminPanel: document.getElementById("admin-panel"),
+
     init: function() {
         this.catAdminButton = document.getElementById("admin")
-        this.catAdminPanel = document.getElementById("admin-panel")
+        this.catAdminButton.addEventListener("click", ()=>{
+            this.show()
+        })
+    },
+
+    show: function() {
+        this.catAdminPanel.style.display = "block"; 
+        adminView.init()
+        this.close()
+        this.update()
+    },
+
+    close: function() {
+        this.catAdminButton = document.getElementById("cancel")
+        this.catAdminButton.addEventListener("click", ()=>{
+            this.catAdminPanel.style.display = "none"; 
+        })
+    },
+
+    update: function() {
+        this.catAdminButton = document.getElementById("save")
+        this.catAdminButton.addEventListener("click", ()=>{
+            adminView.saveChanges() 
+            catView.init()
+        })
+    }
+}
+
+const adminView = {
+    init: function() {
         this.name = document.getElementById('name');
         this.url = document.getElementById('url');
         this.clicks = document.getElementById('clicks');
-
-        this.catAdminButton.addEventListener("click", ()=>{
-            this.catAdminPanel.style.display = "block"; 
-        })
+        this.name.addEventListener("change", event => this.name.value = event.target.value)
+        this.url.addEventListener("change", event => this.url.value = event.target.value)
+        this.clicks.addEventListener("change", event => this.clicks.value = event.target.value)
         this.render();
     },
 
     render: function() {
-        // update the DOM elements with values from the current cat
         var currentCat = octopus.getCurrentCat();
-        this.name.textContent = currentCat.name;
-        this.url.textContent = currentCat.imgSrc;
-        this.clicks.textContent = currentCat.clickCount;
+        this.name.value = currentCat.name;        
+        this.url.value = currentCat.imgSrc;
+        this.clicks.value = currentCat.clickCount;
+    },
+
+    saveChanges: function() {
+        octopus.updateCatModel(this.name.value, this.url.value, this.clicks.value)
+        adminPanelControl.close()
     }
 }
 
