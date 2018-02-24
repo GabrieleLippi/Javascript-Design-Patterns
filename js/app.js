@@ -69,6 +69,7 @@ var octopus = {
     incrementCounter: function() {
         model.currentCat.clickCount++;
         catView.render();
+        adminView.render();
     }
 
 
@@ -138,6 +139,7 @@ var catListView = {
                 return function() {
                     octopus.setCurrentCat(catCopy);
                     catView.render();
+                    adminView.render();
                 };
             })(cat));
 
@@ -151,9 +153,22 @@ const adminView = {
     init: function() {
         this.catAdminButton = document.getElementById("admin")
         this.catAdminPanel = document.getElementById("admin-panel")
+        this.name = document.getElementById('name');
+        this.url = document.getElementById('url');
+        this.clicks = document.getElementById('clicks');
+
         this.catAdminButton.addEventListener("click", ()=>{
             this.catAdminPanel.style.display = "block"; 
         })
+        this.render();
+    },
+
+    render: function() {
+        // update the DOM elements with values from the current cat
+        var currentCat = octopus.getCurrentCat();
+        this.name.textContent = currentCat.name;
+        this.url.textContent = currentCat.imgSrc;
+        this.clicks.textContent = currentCat.clickCount;
     }
 }
 
